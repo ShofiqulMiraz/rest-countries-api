@@ -1,0 +1,30 @@
+.navLight,
+.navDark {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 30px;
+  height: 10vh;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+.navLight {
+  background-color: #ffffff;
+}
+.navDark {
+  background-color: #2b3743;
+}
+
+.theme {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  & > img {
+    width: 25px;
+    height: 25px;
+  }
+  & > p {
+    font-size: 18px;
+    font-weight: 600;
+  }
+}
