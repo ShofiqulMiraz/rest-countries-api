@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Countries from "../components/Countries/Countries";
 import Navbar from "../components/Navbar/Navbar";
 import SearchAndFilter from "../components/SearchAndFilter/SearchAndFilter";
 import useThemeState from "../zustand/theme";
@@ -13,6 +14,7 @@ const Home = () => {
       </Head>
       <Navbar />
       <SearchAndFilter />
+      <Countries />
       {theme === "light" ? (
         <style jsx global>{`
           body {

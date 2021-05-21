@@ -1,8 +1,21 @@
 import styles from "./Search.module.scss";
 import useThemeState from "../../zustand/theme";
+import { useState } from "react";
+import useCountriesState from "../../zustand/countries";
 
 const Search = () => {
   const theme = useThemeState((state) => state.theme);
+  const setSearchedCountries = useCountriesState(
+    (state) => state.setSearchedCountries
+  );
+  const [SearchQuery, setSearchQuery] = useState("");
+  console.log(SearchQuery);
+  const handleChange = (e) => {
+    setSearchQuery(e.target.value.trim());
+    if (SearchQuery.length) {
+      setSearchedCountries(SearchQuery);
+    }
+  };
   return (
     <div className={styles.search}>
       <img
@@ -15,6 +28,7 @@ const Search = () => {
       <input
         type="text"
         placeholder="Search For A Country"
+        onChange={handleChange}
         className={theme === "light" ? styles.inputLight : styles.inputDark}
       />
     </div>
