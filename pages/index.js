@@ -26,6 +26,12 @@ const Home = () => {
             background-color: #202d36;
             color: white;
           }
+          input:focus {
+            color: white;
+          }
+          ::placeholder {
+            color: white;
+          }
         `}</style>
       )}
     </>
