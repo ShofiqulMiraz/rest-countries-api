@@ -1,15 +1,22 @@
 import styles from "./Filter.module.scss";
 import useThemeState from "../../zustand/theme";
-import { useState } from "react";
+import useCountriesState from "../../zustand/countries";
+import { useState, useEffect } from "react";
 
 const Filter = () => {
   const theme = useThemeState((state) => state.theme);
-  const [RegionValue, setRegionValue] = useState("");
-  console.log(RegionValue);
 
-  const handleChange = (e) => {
-    setRegionValue(e.target.value);
-  };
+  const setFilteredCountries = useCountriesState(
+    (state) => state.setFilteredCountries
+  );
+
+  const [RegionValue, setRegionValue] = useState("");
+
+  useEffect(() => {
+    if (RegionValue.length > 1) {
+      setFilteredCountries(RegionValue);
+    }
+  }, [RegionValue]);
 
   return (
     <div
@@ -21,7 +28,7 @@ const Filter = () => {
     >
       <select
         value={RegionValue}
-        onChange={handleChange}
+        onChange={(e) => setRegionValue(e.target.value)}
         style={
           theme === "light"
             ? { backgroundImage: `url("/chevron-down-outline.svg")` }
@@ -30,7 +37,7 @@ const Filter = () => {
       >
         <option value="">Filter by Region</option>
         <option value="africa">Africa</option>
-        <option value="america">America</option>
+        <option value="americas">America</option>
         <option value="asia">Asia</option>
         <option value="europe">Europe</option>
         <option value="oceania">Oceania</option>

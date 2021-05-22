@@ -4,7 +4,7 @@ import { devtools } from "zustand/middleware";
 
 const useCountriesState = create(
   devtools((set) => ({
-    countries: null,
+    countries: [],
     setAllCountries: async () => {
       try {
         const res = await axios.get(
@@ -20,6 +20,17 @@ const useCountriesState = create(
       try {
         const res = await axios.get(
           `https://restcountries.eu/rest/v2/name/${term}?fields=name;population;capital;region;flag`
+        );
+        const countries = res.data;
+        set(() => ({ countries }));
+      } catch (error) {
+        console.log(error.response.data);
+      }
+    },
+    setFilteredCountries: async (region) => {
+      try {
+        const res = await axios.get(
+          `https://restcountries.eu/rest/v2/region/${region}?fields=name;population;capital;region;flag`
         );
         const countries = res.data;
         set(() => ({ countries }));
