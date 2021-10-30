@@ -37,7 +37,7 @@ export default CountryDetailsPage;
 
 export const getServerSideProps = async (ctx) => {
   const res = await axios.get(
-    `https://restcountries.eu/rest/v2/name/${ctx.query.name}`
+    `https://restcountries.com/v2/name/${ctx.query.name}`
   );
   const details = res.data[0];
 
