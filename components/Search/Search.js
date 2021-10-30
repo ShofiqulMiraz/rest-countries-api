@@ -13,10 +13,13 @@ const Search = () => {
   const [SearchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    const delayDebounceFn = setTimeout(() => {
+    if(SearchQuery.length) {
+      const delayDebounceFn = setTimeout(() => {
       setSearchedCountries(SearchQuery);
   }, 300);
   return () => clearTimeout(delayDebounceFn);
+    }
+    
   }, [SearchQuery]);
   
   return (
