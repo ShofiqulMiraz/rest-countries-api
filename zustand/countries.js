@@ -8,7 +8,7 @@ const useCountriesState = create(
     setAllCountries: async () => {
       try {
         const res = await axios.get(
-          `https://restcountries.eu/rest/v2/all?fields=name;population;capital;region;flag`
+          `https://restcountries.com/v3.1/all?fields=name,population,capital,region,flag`
         );
         const countries = res.data;
         set(() => ({ countries }));
@@ -19,7 +19,7 @@ const useCountriesState = create(
     setSearchedCountries: async (term) => {
       try {
         const res = await axios.get(
-          `https://restcountries.eu/rest/v2/name/${term}?fields=name;population;capital;region;flag`
+          `https://restcountries.com/v3.1/name/${term}?fields=name,population,capital,region,flag`
         );
         const countries = res.data;
         set(() => ({ countries }));
@@ -30,7 +30,7 @@ const useCountriesState = create(
     setFilteredCountries: async (region) => {
       try {
         const res = await axios.get(
-          `https://restcountries.eu/rest/v2/region/${region}?fields=name;population;capital;region;flag`
+          `https://restcountries.com/v3.1/region/${region}?fields=name,population,capital,region,flag`
         );
         const countries = res.data;
         set(() => ({ countries }));
