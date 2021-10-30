@@ -10,6 +10,8 @@ const Search = () => {
     (state) => state.setSearchedCountries
   );
 
+  const setAllCountries = useCountriesState((state) => state.setAllCountries);
+
   const [SearchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
@@ -18,6 +20,8 @@ const Search = () => {
       setSearchedCountries(SearchQuery);
   }, 300);
   return () => clearTimeout(delayDebounceFn);
+    } else {
+      setAllCountries();
     }
     
   }, [SearchQuery]);
