@@ -1,6 +1,6 @@
 ## Built With
 
-Next.js By Vercel.
+Next.js By Vercel. Hosted on Vercel.
 
 ## Production Live
 
