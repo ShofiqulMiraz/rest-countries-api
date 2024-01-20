@@ -8,7 +8,6 @@ const useCountriesState = create(
         loading: true,
         setAllCountries: async () => {
             try {
-                set(() => ({ loading: true }));
                 const res = await axios.get(`https://restcountries.com/v2/all?fields=name,population,capital,region,flag`);
                 const countries = res.data;
                 set(() => ({ countries }));
@@ -20,7 +19,6 @@ const useCountriesState = create(
         },
         setSearchedCountries: async (term) => {
             try {
-                set(() => ({ loading: true }));
                 const res = await axios.get(`https://restcountries.com/v2/name/${term}?fields=name,population,capital,region,flag`);
                 const countries = res.data;
                 set(() => ({ countries }));
@@ -32,7 +30,6 @@ const useCountriesState = create(
         },
         setFilteredCountries: async (region) => {
             try {
-                set(() => ({ loading: true }));
                 const res = await axios.get(`https://restcountries.com/v2/region/${region}?fields=name,population,capital,region,flag`);
                 const countries = res.data;
                 set(() => ({ countries }));
