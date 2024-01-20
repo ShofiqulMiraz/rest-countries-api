@@ -2,23 +2,26 @@ import useCountriesState from "../../zustand/countries";
 import styles from "./Countries.module.scss";
 import { useEffect } from "react";
 import CountryCard from "../CountryCard/CountryCard";
+import Loading from "../Loading/Loading";
 
 const Countries = () => {
-  const countries = useCountriesState((state) => state.countries);
+    const countries = useCountriesState((state) => state.countries);
+    const setAllCountries = useCountriesState((state) => state.setAllCountries);
+    const loading = useCountriesState((state) => state.loading);
 
-  const setAllCountries = useCountriesState((state) => state.setAllCountries);
+    useEffect(() => {
+        setAllCountries();
+    }, []);
 
-  useEffect(() => {
-    setAllCountries();
-  }, []);
-
-  return (
-    <div className={styles.countryGrid}>
-      {countries?.map((country, index) => (
-        <CountryCard key={index} country={country} />
-      ))}
-    </div>
-  );
+    return loading ? (
+        <div className={styles.loading}>
+            <Loading />
+        </div>
+    ) : (
+        <div className={styles.countryGrid}>
+            {countries && countries.map((country, index) => <CountryCard key={index} country={country} />)}
+        </div>
+    );
 };
 
 export default Countries;
