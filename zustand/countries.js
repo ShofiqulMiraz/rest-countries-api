@@ -5,7 +5,7 @@ import { devtools } from "zustand/middleware";
 const useCountriesState = create(
     devtools((set) => ({
         countries: [],
-        loading: false,
+        loading: true,
         setAllCountries: async () => {
             try {
                 set(() => ({ loading: true }));
